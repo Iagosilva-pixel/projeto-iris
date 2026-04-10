@@ -18,6 +18,11 @@ class Emergency(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='active')
     latitude = models.DecimalField(max_digits=9, decimal_places=6)
     longitude = models.DecimalField(max_digits=9, decimal_places=6)
+
+    # Novo campo para armazenar o endereço descoberto pelo geopy
+    address = models.TextField(blank=True, null=True)
+
+    # Data de criação (apenas uma vez)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
